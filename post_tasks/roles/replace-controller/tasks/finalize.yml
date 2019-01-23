@@ -72,7 +72,8 @@
       with_items: "{{ all_deprecated_agents.stdout_lines }}"
       when: all_deprecated_agents.stdout_lines != ''
       tags: skip_ansible_lint
-  remote_user: stack
+  become: true
+  become_user: stack
 
 - name: remove the compute services for the removed node
   shell: |
